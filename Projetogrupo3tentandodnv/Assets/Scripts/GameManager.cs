@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public BeatScroller theBS;
     public int currentScore;
     public int scorePerNote = 100;
+    public int scorePerGoodNote = 125;
+    public int scorePerPerfectNote = 150;
     public Text scoreText;
     public Text multiText;
     public int currentMultiplier;
@@ -52,11 +54,27 @@ public class GameManager : MonoBehaviour
         }
         }
 
-        currentScore += scorePerNote * currentMultiplier;
+        //currentScore += scorePerNote * currentMultiplier;
         scoreText.text = "Score: " + currentScore;
         multiText.text = "Multiplier: x" + currentMultiplier;
     }
 
+    public void NormalHit()
+    {
+        currentScore += scorePerNote * currentMultiplier;  
+        NoteHit();
+    }
+
+    public void GoodHit()
+    {
+        currentScore += scorePerGoodNote * currentMultiplier; 
+        NoteHit();
+    }
+    public void PerfectHit()
+    {
+        currentScore += scorePerPerfectNote * currentMultiplier; 
+        NoteHit();     
+    }
     public void NoteMissed()
     {
        currentMultiplier = 1;

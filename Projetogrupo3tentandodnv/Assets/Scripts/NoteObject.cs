@@ -6,6 +6,8 @@ public class NoteObject : MonoBehaviour
 {
     public bool canBePressed = false;
     public KeyCode keyToPress;
+
+    public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
     void Start()
     {
         
@@ -20,7 +22,22 @@ public class NoteObject : MonoBehaviour
             {
                 gameObject.SetActive(false);
 
-                GameManager.instance.NoteHit();
+                //GameManager.instance.NoteHit();
+
+                if (Mathf.Abs(transform.position.x) > 0.25f)
+                {
+                    GameManager.instance.NormalHit();
+                    Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
+                } else if (Mathf.Abs(transform.position.x) > 0.05f)
+                {
+                    GameManager.instance.GoodHit();
+                    Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
+                }else
+                {
+                    GameManager.instance.PerfectHit();
+                    Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
+                }
+
             } 
         }
     }
@@ -36,6 +53,7 @@ public class NoteObject : MonoBehaviour
              canBePressed = false;
             
              GameManager.instance.NoteMissed();
+              Instantiate(missEffect, transform.position, missEffect.transform.rotation);
         }
         
     }
