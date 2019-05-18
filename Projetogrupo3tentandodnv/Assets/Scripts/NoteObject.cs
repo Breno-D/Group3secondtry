@@ -19,7 +19,9 @@ public class NoteObject : MonoBehaviour
             if(canBePressed)
             {
                 gameObject.SetActive(false);
-            }
+
+                GameManager.instance.NoteHit();
+            } 
         }
     }
 
@@ -29,12 +31,21 @@ public class NoteObject : MonoBehaviour
             canBePressed = true;
         }
         
+        if(other.tag == "MissedNotes")
+        {
+             canBePressed = false;
+            
+             GameManager.instance.NoteMissed();
+        }
+        
     }
 
      private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Activator")
         {
-            canBePressed = false;
+           // canBePressed = false;
+            
+            //GameManager.instance.NoteMissed();
         }
         
     }
