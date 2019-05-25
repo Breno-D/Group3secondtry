@@ -6,6 +6,7 @@ public class NoteObject : MonoBehaviour
 {
     public bool canBePressed = false;
     public KeyCode keyToPress;
+    public AudioSource tosse;
 
     public GameObject hitEffect, goodEffect, perfectEffect, missEffect;
     void Start()
@@ -50,10 +51,11 @@ public class NoteObject : MonoBehaviour
         
         if(other.tag == "MissedNotes")
         {
-             canBePressed = false;
-            
-             GameManager.instance.NoteMissed();
-              Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+            canBePressed = false;
+            tosse.Play();
+            GameManager.instance.NoteMissed();
+            Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+              
         }
         
     }

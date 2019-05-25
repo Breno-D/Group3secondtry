@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int multiplierTracker;
     public int[] multiplierThresholds;
     public static GameManager instance;
+    bool isEnd = false;
     public float totalNotes, normalHits, goodHits, perfectHits, missedHits;
     public GameObject resultsScreen;
     public Text percentHit, normalsText, goodsText, perfectsText, missedsText, rankText, finalScoreText;
@@ -39,11 +40,11 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
-                theMusic.Play();
+                Invoke("StartMusic", 3);
             }
         } else 
         {
-            if(!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
+            if(!theMusic.isPlaying && !resultsScreen.activeInHierarchy && isEnd)
             {
                 resultsScreen.SetActive(true);
                 
@@ -131,5 +132,11 @@ public class GameManager : MonoBehaviour
        multiplierTracker = 0;
        multiText.text = "Multiplier: x" + currentMultiplier;
        missedHits++;
+    }
+
+    void StartMusic()
+    {
+        theMusic.Play();
+        isEnd = true;
     }
 }
