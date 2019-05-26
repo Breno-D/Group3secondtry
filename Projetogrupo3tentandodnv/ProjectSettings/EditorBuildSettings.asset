@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: e2862ff19e25895419c3ce7fb6fa7bfd
   - enabled: 1
+    path: Assets/Scenes/Dialogue.unity
+    guid: e59ae230ffadda04aad38c11ccdd9339
+  - enabled: 1
+    path: Assets/Scenes/EscolhadeMusicas.unity
+    guid: 6677cab8379b36741a12685bff35fe0d
+  - enabled: 1
+    path: Assets/Scenes/Megalovania.unity
+    guid: df0f0e7ec1d980f45971e838e0ae1738
+  - enabled: 1
+    path: Assets/Scenes/Track 1.unity
+    guid: 38f6ba89c8234fb4d8843fa958a74ad7
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 21fe2c3301ce124479a8c306b7d9d791
   m_configObjects: {}
